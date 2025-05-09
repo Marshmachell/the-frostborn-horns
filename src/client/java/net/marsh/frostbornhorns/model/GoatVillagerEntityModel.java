@@ -10,17 +10,15 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.render.entity.model.ModelTransformer;
 import net.minecraft.client.render.entity.state.BipedEntityRenderState;
-import net.minecraft.client.render.entity.state.LivingEntityRenderState;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.Set;
 
 public class GoatVillagerEntityModel extends EntityModel<BipedEntityRenderState> {
-	public static final ModelTransformer BABY_TRANSFORMER = new BabyModelTransformer(false, 2.0F, 2.5F, Set.of(EntityModelPartNames.HEAD));
-	private final ModelPart head;
+	public static final ModelTransformer BABY_TRANSFORMER = new BabyModelTransformer(false, 10.0F, 2.0F, Set.of(EntityModelPartNames.HEAD));
+	private final ModelPart left_ear;
 	private final ModelPart right_ear;
-	private final ModelPart nose;
+	private final ModelPart head;
 	private final ModelPart left_horn;
 	private final ModelPart right_horn;
 	private final ModelPart body;
@@ -30,11 +28,11 @@ public class GoatVillagerEntityModel extends EntityModel<BipedEntityRenderState>
 	private final ModelPart leftArm;
 	public GoatVillagerEntityModel(ModelPart root) {
         super(root);
-        this.head = root.getChild("head");
+        this.left_ear = root.getChild("head").getChild("left_ear");
 		this.right_ear = root.getChild("head").getChild("right_ear");
-		this.nose = root.getChild("nose");
-		this.left_horn = root.getChild("left_horn");
-		this.right_horn = root.getChild("right_horn");
+		this.head = root.getChild("head");
+		this.left_horn = root.getChild("head").getChild("left_horn");
+		this.right_horn = root.getChild("head").getChild("right_horn");
 		this.body = root.getChild("body");
 		this.rightLeg = root.getChild("rightLeg");
 		this.leftLeg = root.getChild("leftLeg");
@@ -47,12 +45,12 @@ public class GoatVillagerEntityModel extends EntityModel<BipedEntityRenderState>
 
 		ModelPartData root = modelData.getRoot();
 
-		ModelPartData head = root.addChild("head", ModelPartBuilder.create().uv(23, 52).cuboid(0.0F, 4.0F, -7.0F, 0.0F, 7.0F, 5.0F, new Dilation(0.0F))
-		.uv(2, 61).cuboid(-5.5F, -4.0F, -3.0F, 3.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 2.0F, -4.0F));
-		ModelPartData right_ear = head.addChild("right_ear", ModelPartBuilder.create().uv(2, 61).mirrored().cuboid(2.5F, -21.0F, -10.0F, 3.0F, 2.0F, 1.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.origin(0.0F, 17.0F, 7.0F));
-		ModelPartData nose = root.addChild("nose", ModelPartBuilder.create().uv(34, 46).cuboid(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F, new Dilation(0.0F)), ModelTransform.of(0.5F, 1.0F, -5.0F, 0.9599F, 0.0F, 0.0F));
-		ModelPartData left_horn = root.addChild("left_horn", ModelPartBuilder.create().uv(12, 55).cuboid(0.49F, -9.0F, -3.0F, 2.0F, 7.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 2.0F, -4.0F));
-		ModelPartData right_horn = root.addChild("right_horn", ModelPartBuilder.create().uv(12, 55).cuboid(-2.49F, -9.0F, -3.0F, 2.0F, 7.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 2.0F, -4.0F));
+		ModelPartData head = root.addChild("head", ModelPartBuilder.create().uv(23, 52).cuboid(0.0F, 3.0F, -7.0F, 0.0F, 7.0F, 5.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 3.0F, -3.0F));
+		ModelPartData left_ear = head.addChild("left_ear", ModelPartBuilder.create().uv(2, 61).mirrored().cuboid(2.5F, -21.0F, -10.0F, 3.0F, 2.0F, 1.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.origin(0.0F, 16.0F, 7.0F));
+		ModelPartData right_ear = head.addChild("right_ear", ModelPartBuilder.create().uv(2, 61).cuboid(-5.5F, -21.0F, -10.0F, 3.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 16.0F, 7.0F));
+		ModelPartData nose = head.addChild("nose", ModelPartBuilder.create().uv(34, 46).cuboid(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F, new Dilation(0.0F)), ModelTransform.of(0.5F, -2.0F, -1.0F, 0.9599F, 0.0F, 0.0F));
+		ModelPartData left_horn = head.addChild("left_horn", ModelPartBuilder.create().uv(12, 55).cuboid(0.49F, -9.0F, -3.0F, 2.0F, 7.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, -1.0F, 0.0F));
+		ModelPartData right_horn = head.addChild("right_horn", ModelPartBuilder.create().uv(12, 55).cuboid(-2.49F, -9.0F, -3.0F, 2.0F, 7.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, -1.0F, 0.0F));
 		ModelPartData body = root.addChild("body", ModelPartBuilder.create().uv(1, 1).cuboid(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F, new Dilation(0.0F))
 		.uv(0, 28).cuboid(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F, new Dilation(0.0F)), ModelTransform.of(-0.5F, 9.0F, -11.5F, -1.5708F, 0.0F, 0.0F));
 		ModelPartData rightLeg = root.addChild("rightLeg", ModelPartBuilder.create().uv(49, 29).cuboid(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, new Dilation(0.0F)), ModelTransform.origin(-2.0F, 18.0F, 0.0F));
@@ -64,6 +62,9 @@ public class GoatVillagerEntityModel extends EntityModel<BipedEntityRenderState>
 	@Override
 	public void setAngles(BipedEntityRenderState bipedEntityRenderState) {
 		super.setAngles(bipedEntityRenderState);
+
+		this.head.pitch = bipedEntityRenderState.pitch * (float) (Math.PI / 180.0);
+		this.head.yaw = bipedEntityRenderState.relativeHeadYaw * (float) (Math.PI / 180.0);
 
 		float g = bipedEntityRenderState.limbSwingAnimationProgress;
 		float h = bipedEntityRenderState.limbSwingAmplitude;

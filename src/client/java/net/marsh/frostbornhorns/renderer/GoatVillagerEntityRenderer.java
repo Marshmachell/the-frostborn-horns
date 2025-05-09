@@ -14,20 +14,25 @@ import static net.marsh.frostbornhorns.TheFrostbornHorns.MOD_ID;
 
 @SuppressWarnings("deprecation")
 @Environment(EnvType.CLIENT)
-public class GoatVillagerEntityRenderer extends AgeableMobEntityRenderer<GoatVillagerEntity, BipedEntityRenderState, GoatVillagerEntityModel> {
+public class GoatVillagerEntityRenderer extends AgeableMobEntityRenderer<GoatVillagerEntity, GoatVillagerEntityRenderState, GoatVillagerEntityModel> {
     private static final Identifier TEXTURE = Identifier.of(MOD_ID, "textures/entity/goat_villager/goat_villager.png");
 
     public GoatVillagerEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new GoatVillagerEntityModel(context.getPart(TheFrostbornHornsClient.MODEL_GOAT_VILLAGER_LAYER)), new GoatVillagerEntityModel(context.getPart(TheFrostbornHornsClient.MODEL_GOAT_VILLAGER_BABY_LAYER)), 0.5F);
+        super(context, new GoatVillagerEntityModel(context.getPart(TheFrostbornHornsClient.GOAT_VILLAGER)), new GoatVillagerEntityModel(context.getPart(TheFrostbornHornsClient.GOAT_VILLAGER_BABY)), 0.6F);
     }
-
     @Override
-    public Identifier getTexture(BipedEntityRenderState state) {
+    public Identifier getTexture(GoatVillagerEntityRenderState state) {
         return TEXTURE;
     }
 
     @Override
-    public BipedEntityRenderState createRenderState() {
-        return new BipedEntityRenderState();
+    public GoatVillagerEntityRenderState createRenderState() {
+        return new GoatVillagerEntityRenderState();
+    }
+    public void updateRenderState(GoatVillagerEntity goatVillagerEntity, GoatVillagerEntityRenderState goatVillagerEntityRenderState, float f) {
+        super.updateRenderState(goatVillagerEntity, goatVillagerEntityRenderState, f);
+        goatVillagerEntityRenderState.hasLeftHorn = goatVillagerEntity.hasLeftHorn();
+        goatVillagerEntityRenderState.hasRightHorn = goatVillagerEntity.hasRightHorn();
+        goatVillagerEntityRenderState.headPitch = goatVillagerEntity.getHeadPitch();
     }
 }
