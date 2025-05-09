@@ -38,14 +38,12 @@ public class GoatVillagerEntity extends HostileEntity implements Angerable {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("IsBaby", this.isBaby());
-        //this.writeInventory(nbt, this.getRegistryManager());
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         this.setBaby(nbt.getBoolean("IsBaby", false));
-        //this.readInventory(nbt, this.getRegistryManager());
     }
 
     protected void initDataTracker(DataTracker.Builder builder) {
