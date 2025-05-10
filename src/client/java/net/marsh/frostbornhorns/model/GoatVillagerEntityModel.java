@@ -4,17 +4,17 @@
 
 package net.marsh.frostbornhorns.model;
 
+import net.marsh.frostbornhorns.renderer.GoatVillagerEntityRenderState;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.entity.model.BabyModelTransformer;
-import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.EntityModelPartNames;
-import net.minecraft.client.render.entity.model.ModelTransformer;
+import net.minecraft.client.render.entity.model.*;
 import net.minecraft.client.render.entity.state.BipedEntityRenderState;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Arm;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.Set;
 
-public class GoatVillagerEntityModel extends EntityModel<BipedEntityRenderState> {
+public class GoatVillagerEntityModel extends EntityModel<GoatVillagerEntityRenderState> implements ModelWithArms {
 	public static final ModelTransformer BABY_TRANSFORMER = new BabyModelTransformer(false, 10.0F, 2.0F, Set.of(EntityModelPartNames.HEAD));
 	private final ModelPart left_ear;
 	private final ModelPart right_ear;
@@ -45,7 +45,7 @@ public class GoatVillagerEntityModel extends EntityModel<BipedEntityRenderState>
 
 		ModelPartData root = modelData.getRoot();
 
-		ModelPartData head = root.addChild("head", ModelPartBuilder.create().uv(23, 52).cuboid(0.0F, 3.0F, -7.0F, 0.0F, 7.0F, 5.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 3.0F, -3.0F));
+		ModelPartData head = root.addChild("head", ModelPartBuilder.create().uv(22, 47).cuboid(0.0F, 2.0F, -8.0F, 0.0F, 11.0F, 6.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 3.0F, -3.0F));
 		ModelPartData left_ear = head.addChild("left_ear", ModelPartBuilder.create().uv(2, 61).mirrored().cuboid(2.5F, -21.0F, -10.0F, 3.0F, 2.0F, 1.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.origin(0.0F, 16.0F, 7.0F));
 		ModelPartData right_ear = head.addChild("right_ear", ModelPartBuilder.create().uv(2, 61).cuboid(-5.5F, -21.0F, -10.0F, 3.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 16.0F, 7.0F));
 		ModelPartData nose = head.addChild("nose", ModelPartBuilder.create().uv(34, 46).cuboid(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F, new Dilation(0.0F)), ModelTransform.of(0.5F, -2.0F, -1.0F, 0.9599F, 0.0F, 0.0F));
@@ -55,26 +55,49 @@ public class GoatVillagerEntityModel extends EntityModel<BipedEntityRenderState>
 		.uv(0, 28).cuboid(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F, new Dilation(0.0F)), ModelTransform.of(-0.5F, 9.0F, -11.5F, -1.5708F, 0.0F, 0.0F));
 		ModelPartData rightLeg = root.addChild("rightLeg", ModelPartBuilder.create().uv(49, 29).cuboid(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, new Dilation(0.0F)), ModelTransform.origin(-2.0F, 18.0F, 0.0F));
 		ModelPartData leftLeg = root.addChild("leftLeg", ModelPartBuilder.create().uv(36, 29).cuboid(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, new Dilation(0.0F)), ModelTransform.origin(2.0F, 18.0F, 0.0F));
-		ModelPartData rightArm = root.addChild("rightArm", ModelPartBuilder.create().uv(49, 2).cuboid(-2.0F, -2.0F, -1.5F, 3.0F, 10.0F, 3.0F, new Dilation(0.0F)), ModelTransform.origin(-5.5F, 5.0F, 0.0F));
-		ModelPartData leftArm = root.addChild("leftArm", ModelPartBuilder.create().uv(35, 2).cuboid(-1.0F, -2.0F, -1.5F, 3.0F, 10.0F, 3.0F, new Dilation(0.0F)), ModelTransform.origin(5.5F, 5.0F, 0.0F));
+		ModelPartData rightArm = root.addChild("rightArm", ModelPartBuilder.create().uv(49, 2).cuboid(-2.0F, -2.0F, -1.5F, 3.0F, 10.0F, 3.0F, new Dilation(0.0F)), ModelTransform.origin(-4.5F, 5.0F, 0.0F));
+		ModelPartData leftArm = root.addChild("leftArm", ModelPartBuilder.create().uv(35, 2).cuboid(-1.0F, -2.0F, -1.5F, 3.0F, 10.0F, 3.0F, new Dilation(0.0F)), ModelTransform.origin(4.5F, 5.0F, 0.0F));
 		return TexturedModelData.of(modelData, 64, 64);
 	}
 	@Override
-	public void setAngles(BipedEntityRenderState bipedEntityRenderState) {
-		super.setAngles(bipedEntityRenderState);
+	public void setAngles(GoatVillagerEntityRenderState goatVillagerEntityRenderState) {
+		super.setAngles(goatVillagerEntityRenderState);
 
-		this.head.pitch = bipedEntityRenderState.pitch * (float) (Math.PI / 180.0);
-		this.head.yaw = bipedEntityRenderState.relativeHeadYaw * (float) (Math.PI / 180.0);
+		this.head.pitch = goatVillagerEntityRenderState.pitch * (float) (Math.PI / 180.0);
+		this.head.yaw = goatVillagerEntityRenderState.relativeHeadYaw * (float) (Math.PI / 180.0);
 
-		float g = bipedEntityRenderState.limbSwingAnimationProgress;
-		float h = bipedEntityRenderState.limbSwingAmplitude;
-		this.rightArm.pitch = MathHelper.cos(g * 0.6662F + 3.1415927F) * 2.0F * h * 0.5F / bipedEntityRenderState.limbAmplitudeInverse;
-		this.leftArm.pitch = MathHelper.cos(g * 0.6662F) * 2.0F * h * 0.5F / bipedEntityRenderState.limbAmplitudeInverse;
-		this.rightLeg.pitch = MathHelper.cos(g * 0.6662F) * 1.4F * h / bipedEntityRenderState.limbAmplitudeInverse;
-		this.leftLeg.pitch = MathHelper.cos(g * 0.6662F + 3.1415927F) * 1.4F * h / bipedEntityRenderState.limbAmplitudeInverse;
+		this.head.getChild("left_horn").visible = goatVillagerEntityRenderState.hasLeftHorn;
+		this.head.getChild("right_horn").visible = goatVillagerEntityRenderState.hasRightHorn;
+
+		float g = goatVillagerEntityRenderState.limbSwingAnimationProgress;
+		float h = goatVillagerEntityRenderState.limbSwingAmplitude;
+		this.rightArm.pitch = MathHelper.cos(g * 0.6662F + 3.1415927F) * 2.0F * h * 0.5F / goatVillagerEntityRenderState.limbAmplitudeInverse;
+		this.leftArm.pitch = MathHelper.cos(g * 0.6662F) * 2.0F * h * 0.5F / goatVillagerEntityRenderState.limbAmplitudeInverse;
+		this.rightLeg.pitch = MathHelper.cos(g * 0.6662F) * 1.4F * h / goatVillagerEntityRenderState.limbAmplitudeInverse;
+		this.leftLeg.pitch = MathHelper.cos(g * 0.6662F + 3.1415927F) * 1.4F * h / goatVillagerEntityRenderState.limbAmplitudeInverse;
 		this.rightLeg.yaw = 0.005F;
 		this.leftLeg.yaw = -0.005F;
 		this.rightLeg.roll = 0.005F;
 		this.leftLeg.roll = -0.005F;
+		/*
+		h = goatVillagerEntityRenderState.age / 40.0F;
+		ModelPart var10000 = this.head;
+		var10000.originX += MathHelper.sin(h * 10.0F);
+		var10000 = this.head;
+		var10000.originY += MathHelper.sin(h * 40.0F) + 0.4F;
+		this.rightArm.roll = 0.017453292F * (120.0F + MathHelper.cos(h * 40.0F) * 10.0F);
+		this.leftArm.roll = this.rightArm.roll * -1.0F;
+		var10000 = this.rightArm;
+		var10000.originY += MathHelper.sin(h * 40.0F) * 0.5F - 0.5F;
+		var10000 = this.leftArm;
+		var10000.originY += MathHelper.sin(h * 40.0F) * 0.5F + 0.5F;
+		var10000 = this.body;
+		var10000.originY += MathHelper.sin(h * 40.0F) * 0.35F;
+		*/
+	}
+
+	@Override
+	public void setArmAngle(Arm arm, MatrixStack matrices) {
+
 	}
 }

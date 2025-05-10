@@ -132,6 +132,12 @@ public class GoatVillagerEntity extends HostileEntity implements Angerable {
     public static boolean canSpawn(EntityType<GoatVillagerEntity> goatVillagerEntityEntityType, ServerWorldAccess serverWorldAccess, SpawnReason spawnReason, BlockPos blockPos, Random random) {
         return true;
     }
+
+    @Override
+    public boolean cannotDespawn() {
+        return true;
+    }
+
     protected void onGrowUp() {
         if (this.isBaby()) {
             this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).setBaseValue(1.0);
@@ -157,6 +163,7 @@ public class GoatVillagerEntity extends HostileEntity implements Angerable {
             EntityAttributeInstance entityAttributeInstance = this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED);
             entityAttributeInstance.removeModifier(BABY_SPEED_BOOST.id());
             if (baby) {
+                this.removeHorns();
                 entityAttributeInstance.addTemporaryModifier(BABY_SPEED_BOOST);
             }
         }

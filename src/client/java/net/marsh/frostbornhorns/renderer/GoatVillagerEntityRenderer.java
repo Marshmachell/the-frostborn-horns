@@ -4,10 +4,11 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.marsh.frostbornhorns.TheFrostbornHornsClient;
 import net.marsh.frostbornhorns.entity.GoatVillagerEntity;
+import net.marsh.frostbornhorns.feature.GoatVillagerFeatureRenderer;
 import net.marsh.frostbornhorns.model.GoatVillagerEntityModel;
 import net.minecraft.client.render.entity.AgeableMobEntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
+import net.minecraft.client.render.entity.state.ArmedEntityRenderState;
 import net.minecraft.util.Identifier;
 
 import static net.marsh.frostbornhorns.TheFrostbornHorns.MOD_ID;
@@ -19,6 +20,7 @@ public class GoatVillagerEntityRenderer extends AgeableMobEntityRenderer<GoatVil
 
     public GoatVillagerEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new GoatVillagerEntityModel(context.getPart(TheFrostbornHornsClient.GOAT_VILLAGER)), new GoatVillagerEntityModel(context.getPart(TheFrostbornHornsClient.GOAT_VILLAGER_BABY)), 0.6F);
+        this.addFeature(new GoatVillagerFeatureRenderer(this));
     }
     @Override
     public Identifier getTexture(GoatVillagerEntityRenderState state) {
@@ -34,5 +36,6 @@ public class GoatVillagerEntityRenderer extends AgeableMobEntityRenderer<GoatVil
         goatVillagerEntityRenderState.hasLeftHorn = goatVillagerEntity.hasLeftHorn();
         goatVillagerEntityRenderState.hasRightHorn = goatVillagerEntity.hasRightHorn();
         goatVillagerEntityRenderState.headPitch = goatVillagerEntity.getHeadPitch();
+        ArmedEntityRenderState.updateRenderState(goatVillagerEntity, goatVillagerEntityRenderState, this.itemModelResolver);
     }
 }
