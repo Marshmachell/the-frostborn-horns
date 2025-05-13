@@ -1,0 +1,73 @@
+{
+	"credit": "Made by Falanta Fantomo with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"goat_spear": "frostborn-horns:item/goat_spear_model",
+		"particle": "frostborn-horns:item/goat_spear_model"
+	},
+	"elements": [
+		{
+			"from": [7.5, 7.5, -2],
+			"to": [8.5, 8.5, 24],
+			"faces": {
+				"north": {"uv": [15.5, 0, 16, 0.5], "texture": "#goat_spear"},
+				"east": {"uv": [15.5, 0, 16, 13], "rotation": 90, "texture": "#goat_spear"},
+				"south": {"uv": [15.5, 12.5, 16, 13], "rotation": 90, "texture": "#goat_spear"},
+				"west": {"uv": [15.5, 13, 16, 0], "rotation": 90, "texture": "#goat_spear"},
+				"up": {"uv": [15.5, 0, 16, 13], "texture": "#goat_spear"},
+				"down": {"uv": [15.5, 13, 16, 0], "texture": "#goat_spear"}
+			}
+		},
+		{
+			"from": [5, 8, -7.75],
+			"to": [11, 8, -1.75],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, -4.75]},
+			"faces": {
+				"up": {"uv": [0, 0, 3, 3], "texture": "#goat_spear"},
+				"down": {"uv": [0, 3, 3, 0], "texture": "#goat_spear"}
+			}
+		},
+		{
+			"from": [8, 5, -7.75],
+			"to": [8, 11, -1.75],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, 8, -4.75]},
+			"faces": {
+				"east": {"uv": [0, 3, 3, 0], "rotation": 270, "texture": "#goat_spear"},
+				"west": {"uv": [0, 0, 3, 3], "rotation": 270, "texture": "#goat_spear"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [90, 0, -15],
+			"translation": [0.5, 0, 1.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [90, 0, -15],
+			"translation": [0.5, 0, 1.5]
+		},
+		"firstperson_righthand": {
+			"rotation": [90, 13, 26],
+			"translation": [6, -5, -2]
+		},
+		"firstperson_lefthand": {
+			"rotation": [90, 13, 26],
+			"translation": [6, -5, -2]
+		},
+		"ground": {
+			"scale": [0.1, 0.1, 0.1]
+		},
+		"gui": {
+			"rotation": [90, -45, 0],
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"head": {
+			"rotation": [0, 90, 0],
+			"scale": [1.6, 1.6, 1.6]
+		},
+		"fixed": {
+			"rotation": [90, 0, 0]
+		}
+	}
+}
