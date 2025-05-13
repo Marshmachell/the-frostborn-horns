@@ -9,15 +9,15 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import static net.marsh.frostbornhorns.TheFrostbornHorns.*;
+import static net.marsh.frostbornhorns.FrostbornHorns.*;
 
-public class TheFrostbornHornsItemGroups {
+public class FrostbornHornsItemGroups {
     public static final ItemGroup THE_FROSTBORN_HORNS_ITEMS_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(MOD_ID, "the_frostborn_horns_items"),
             FabricItemGroup.builder().icon(() -> new ItemStack(Items.GOAT_HORN))
                     .displayName(Text.of("Frostborn Horns"))
                     .entries((displayContext, entries) -> {
-                        entries.add(TheFrostbornHornsItems.GOAT_SPEAR);
+                        entries.add(FrostbornHornsItems.GOAT_SPEAR);
                     })
                     .build());
 

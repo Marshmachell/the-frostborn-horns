@@ -6,12 +6,11 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 
-import java.util.function.Function;
-import static net.marsh.frostbornhorns.TheFrostbornHorns.*;
+import static net.marsh.frostbornhorns.FrostbornHorns.*;
 
 @Environment(EnvType.CLIENT)
 public class GoatSpearEntityModel extends Model {
-    public static final Identifier TEXTURE = Identifier.of(MOD_ID, "textures/entity/goat_spear_model.png");
+    public static final Identifier TEXTURE = Identifier.of(MOD_ID, "textures/entity/goat_spear.png");
     public GoatSpearEntityModel(ModelPart root) {
         super(root, RenderLayer::getEntitySolid);
     }

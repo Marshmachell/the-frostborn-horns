@@ -2,7 +2,7 @@ package net.marsh.frostbornhorns.renderer;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.marsh.frostbornhorns.TheFrostbornHornsClient;
+import net.marsh.frostbornhorns.FrostbornHornsClient;
 import net.marsh.frostbornhorns.entity.GoatVillagerEntity;
 import net.marsh.frostbornhorns.feature.GoatVillagerFeatureRenderer;
 import net.marsh.frostbornhorns.model.GoatVillagerEntityModel;
@@ -11,7 +11,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.state.ArmedEntityRenderState;
 import net.minecraft.util.Identifier;
 
-import static net.marsh.frostbornhorns.TheFrostbornHorns.MOD_ID;
+import static net.marsh.frostbornhorns.FrostbornHorns.MOD_ID;
 
 @SuppressWarnings("deprecation")
 @Environment(EnvType.CLIENT)
@@ -19,7 +19,7 @@ public class GoatVillagerEntityRenderer extends AgeableMobEntityRenderer<GoatVil
     private static final Identifier TEXTURE = Identifier.of(MOD_ID, "textures/entity/goat_villager/goat_villager.png");
 
     public GoatVillagerEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new GoatVillagerEntityModel(context.getPart(TheFrostbornHornsClient.GOAT_VILLAGER)), new GoatVillagerEntityModel(context.getPart(TheFrostbornHornsClient.GOAT_VILLAGER_BABY)), 0.6F);
+        super(context, new GoatVillagerEntityModel(context.getPart(FrostbornHornsClient.GOAT_VILLAGER)), new GoatVillagerEntityModel(context.getPart(FrostbornHornsClient.GOAT_VILLAGER_BABY)), 0.6F);
         this.addFeature(new GoatVillagerFeatureRenderer(this));
     }
     @Override

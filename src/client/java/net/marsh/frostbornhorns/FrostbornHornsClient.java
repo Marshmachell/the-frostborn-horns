@@ -8,11 +8,11 @@ import net.marsh.frostbornhorns.renderer.GoatVillagerEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
-import static net.marsh.frostbornhorns.TheFrostbornHorns.MOD_ID;
-import static net.marsh.frostbornhorns.TheFrostbornHornsEntities.GOAT_SPEAR_ID;
-import static net.marsh.frostbornhorns.TheFrostbornHornsEntities.GOAT_VILLAGER_ID;
+import static net.marsh.frostbornhorns.FrostbornHorns.MOD_ID;
+import static net.marsh.frostbornhorns.FrostbornHornsEntities.GOAT_SPEAR_ID;
+import static net.marsh.frostbornhorns.FrostbornHornsEntities.GOAT_VILLAGER_ID;
 
-public class TheFrostbornHornsClient implements ClientModInitializer {
+public class FrostbornHornsClient implements ClientModInitializer {
 	public static final EntityModelLayer GOAT_VILLAGER = new EntityModelLayer(Identifier.of(MOD_ID, GOAT_VILLAGER_ID), "main");
 	public static final EntityModelLayer GOAT_VILLAGER_BABY = new EntityModelLayer(Identifier.of(MOD_ID, createBabyId(GOAT_VILLAGER_ID)), "main");
 	public static final EntityModelLayer GOAT_SPEAR = new EntityModelLayer(Identifier.of(MOD_ID, GOAT_SPEAR_ID), "main");
@@ -22,7 +22,8 @@ public class TheFrostbornHornsClient implements ClientModInitializer {
 	}
 	@Override
 	public void onInitializeClient() {
-		EntityRendererRegistry.register(TheFrostbornHornsEntities.GOAT_VILLAGER, GoatVillagerEntityRenderer::new);
+		EntityRendererRegistry.register(FrostbornHornsEntities.GOAT_VILLAGER, GoatVillagerEntityRenderer::new);
+		//EntityRendererRegistry.register(TheFrostbornHornsEntities.GOAT_SPEAR, GoatSpearEntityRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(GOAT_VILLAGER, GoatVillagerEntityModel::getTexturedModelData);
 		EntityModelLayerRegistry.registerModelLayer(GOAT_VILLAGER_BABY, () -> GoatVillagerEntityModel.getTexturedModelData().transform(GoatVillagerEntityModel.BABY_TRANSFORMER));
 	}

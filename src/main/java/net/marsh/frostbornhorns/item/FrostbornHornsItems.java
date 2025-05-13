@@ -8,9 +8,9 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
-import static net.marsh.frostbornhorns.TheFrostbornHorns.*;
+import static net.marsh.frostbornhorns.FrostbornHorns.*;
 
-public class TheFrostbornHornsItems {
+public class FrostbornHornsItems {
     public static final Item GOAT_SPEAR = registerItem("goat_spear", new GoatSpearItem(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, "goat_spear")))));
     public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(MOD_ID, name), item);
