@@ -7,7 +7,6 @@ package net.marsh.frostbornhorns.model;
 import net.marsh.frostbornhorns.renderer.GoatVillagerEntityRenderState;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.*;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Arm;
 import net.minecraft.util.math.MathHelper;
@@ -79,6 +78,7 @@ public class GoatVillagerEntityModel extends EntityModel<GoatVillagerEntityRende
 		this.leftLeg.yaw = -0.005F;
 		this.rightLeg.roll = 0.005F;
 		this.leftLeg.roll = -0.005F;
+
 		/*
 		h = goatVillagerEntityRenderState.age / 40.0F;
 		ModelPart var10000 = this.head;

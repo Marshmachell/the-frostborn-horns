@@ -3,7 +3,8 @@
 	"package": "net.marsh.frostbornhorns.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"FrogEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
