@@ -1,5 +1,6 @@
 package net.marsh.frostbornhorns.feature;
 
+import net.marsh.frostbornhorns.model.GoatVillagerBaseEntityModel;
 import net.marsh.frostbornhorns.model.GoatVillagerEntityModel;
 import net.marsh.frostbornhorns.renderer.GoatVillagerEntityRenderState;
 import net.minecraft.client.render.OverlayTexture;

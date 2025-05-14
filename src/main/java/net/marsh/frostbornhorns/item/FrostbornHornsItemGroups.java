@@ -10,6 +10,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import static net.marsh.frostbornhorns.FrostbornHorns.*;
+import static net.marsh.frostbornhorns.item.FrostbornHornsItems.*;
+
 
 public class FrostbornHornsItemGroups {
     public static final ItemGroup THE_FROSTBORN_HORNS_ITEMS_GROUP = Registry.register(Registries.ITEM_GROUP,
@@ -17,7 +19,8 @@ public class FrostbornHornsItemGroups {
             FabricItemGroup.builder().icon(() -> new ItemStack(Items.GOAT_HORN))
                     .displayName(Text.of("Frostborn Horns"))
                     .entries((displayContext, entries) -> {
-                        entries.add(FrostbornHornsItems.GOAT_SPEAR);
+                        entries.add(GOAT_SPEAR);
+                        entries.add(GOAT_VILLAGER_SPAWN_EGG);
                     })
                     .build());
 

@@ -3,6 +3,7 @@ package net.marsh.frostbornhorns.renderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.marsh.frostbornhorns.FrostbornHornsClient;
+import net.marsh.frostbornhorns.entity.AbstractGoatVillagerEntity;
 import net.marsh.frostbornhorns.entity.GoatVillagerEntity;
 import net.marsh.frostbornhorns.feature.GoatVillagerFeatureRenderer;
 import net.marsh.frostbornhorns.model.GoatVillagerEntityModel;

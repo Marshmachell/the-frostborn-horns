@@ -1,17 +1,24 @@
 package net.marsh.frostbornhorns.item.custom;
 
+import net.marsh.frostbornhorns.FrostbornHornsEntities;
+import net.marsh.frostbornhorns.entity.GoatSpearEntity;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.component.type.ToolComponent;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.consume.UseAction;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Direction;
@@ -41,17 +48,25 @@ public class GoatSpearItem extends Item implements ProjectileItem {
         return 72000;
     }
 
-    @Override
     public boolean onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (user instanceof PlayerEntity playerEntity) {
             int var6 = this.getMaxUseTime(stack, user) - remainingUseTicks;
             if (var6 < 10) {
                 return false;
             } else {
-                world.playSoundFromEntity(null, playerEntity, SoundEvents.ITEM_TRIDENT_THROW.value(), SoundCategory.PLAYERS, 1.0F, 0.776F);
+                playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
+                if (world instanceof ServerWorld serverWorld) {
+                    stack.damage(1, playerEntity);
+                    ItemStack itemStack = stack.splitUnlessCreative(1, playerEntity);
+                    GoatSpearEntity goatSpearEntity = (GoatSpearEntity) ProjectileEntity.spawnWithVelocity(GoatSpearEntity::new, serverWorld, itemStack, playerEntity, 0.0F, 1.5F, 1.0F);
+                    if (playerEntity.isInCreativeMode()) {
+                        goatSpearEntity.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
+                    }
+                    world.playSoundFromEntity(null, playerEntity, SoundEvents.ITEM_TRIDENT_THROW.value(), SoundCategory.PLAYERS, 1.0F, 0.776F);
+                }
             }
         }
-        return false;
+        return true;
     }
 
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
@@ -64,13 +79,11 @@ public class GoatSpearItem extends Item implements ProjectileItem {
         }
     }
 
-    @Override
     public ProjectileEntity createEntity(World world, Position pos, ItemStack stack, Direction direction) {
-        //GoatSpearEntity goatSpearEntity = TheFrostbornHornsEntities.GOAT_SPEAR.create(world, SpawnReason.SPAWN_ITEM_USE);
-        //goatSpearEntity.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
-        //world.spawnEntity(goatSpearEntity);
-        //goatSpearEntity.refreshPositionAndAngles(pos.getX(), pos.getY(), pos.getZ(), goatSpearEntity.getYaw(), goatSpearEntity.getPitch());
-        //return goatSpearEntity;
-        return null;
+        GoatSpearEntity goatSpearEntity = FrostbornHornsEntities.GOAT_SPEAR.create(world, SpawnReason.SPAWN_ITEM_USE);
+        goatSpearEntity.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
+        world.spawnEntity(goatSpearEntity);
+        goatSpearEntity.refreshPositionAndAngles(pos.getX(), pos.getY(), pos.getZ(), goatSpearEntity.getYaw(), goatSpearEntity.getPitch());
+        return goatSpearEntity;
     }
 }

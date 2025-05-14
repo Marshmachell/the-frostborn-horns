@@ -2,6 +2,7 @@ package net.marsh.frostbornhorns;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.marsh.frostbornhorns.entity.GoatSpearEntity;
+import net.marsh.frostbornhorns.entity.AbstractGoatVillagerEntity;
 import net.marsh.frostbornhorns.entity.GoatVillagerEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -25,14 +26,13 @@ public class FrostbornHornsEntities {
             EntityType.Builder.create(GoatVillagerEntity::new, SpawnGroup.MISC)
                     .eyeHeight(0.9f)
                     .maxTrackingRange(32)
-                    .dimensions(0.85f, 1.75f)
+                    .dimensions(0.9f, 1.75f)
+                    .passengerAttachments(1.425F)
                     .build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(MOD_ID, GOAT_VILLAGER_ID))));
 
     public static final String GOAT_SPEAR_ID = "goat_spear";
     public static final EntityType<GoatSpearEntity> GOAT_SPEAR = Registry.register(
             Registries.ENTITY_TYPE, Identifier.of(MOD_ID, GOAT_SPEAR_ID),
-            //FabricEntityType.Builder.createMob(GoatSpearEntity::new, SpawnGroup.MISC)
-            //        .dimensions(0.5f, 0.5f).build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(MOD_ID, GOAT_SPEAR_ID)))
             EntityType.Builder.<GoatSpearEntity>create(GoatSpearEntity::new, SpawnGroup.MISC).dimensions(0.5f, 0.5f).build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(MOD_ID, GOAT_SPEAR_ID)))
     );
 

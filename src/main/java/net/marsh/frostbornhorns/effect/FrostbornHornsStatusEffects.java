@@ -11,7 +11,7 @@ import static net.marsh.frostbornhorns.FrostbornHorns.*;
 
 public class FrostbornHornsStatusEffects {
     public static final RegistryEntry<StatusEffect> HORNED_LIAR = registerStatusEffect("horned_liar",
-            new HornedLiarEffect(StatusEffectCategory.NEUTRAL, 15912297));
+            new HornedLiarStatusEffect(StatusEffectCategory.NEUTRAL, 15912297));
 
     private static RegistryEntry<StatusEffect> registerStatusEffect(String name, StatusEffect statusEffect) {
         return Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(MOD_ID, name), statusEffect);

@@ -1,0 +1,15 @@
+{
+  "effect.horned_liar.ambient": {
+    "subtitle": "sounds.frostborn-horns.effect.horned_liar.ambient",
+    "sounds": [
+      "frostborn-horns:effect/horned_liar/horned_liar1",
+      "frostborn-horns:effect/horned_liar/horned_liar2",
+      "frostborn-horns:effect/horned_liar/horned_liar3",
+      "frostborn-horns:effect/horned_liar/horned_liar4",
+      "frostborn-horns:effect/horned_liar/horned_liar5",
+      "frostborn-horns:effect/horned_liar/horned_liar6",
+      "frostborn-horns:effect/horned_liar/horned_liar7",
+      "frostborn-horns:effect/horned_liar/horned_liar8"
+    ]
+  }
+}

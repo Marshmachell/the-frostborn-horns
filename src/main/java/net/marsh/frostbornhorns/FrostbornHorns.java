@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.marsh.frostbornhorns.effect.FrostbornHornsStatusEffects;
 import net.marsh.frostbornhorns.item.FrostbornHornsItemGroups;
 import net.marsh.frostbornhorns.item.FrostbornHornsItems;
+import net.marsh.frostbornhorns.sound.FrostbornHornsSounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,5 +19,6 @@ public class FrostbornHorns implements ModInitializer {
 		FrostbornHornsEntities.register();
 		FrostbornHornsItems.register();
 		FrostbornHornsStatusEffects.register();
+		FrostbornHornsSounds.register();
 	}
 }
