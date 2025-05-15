@@ -1,5 +1,9 @@
 {
   "item.frostborn-horns.goat_spear": "Козлиное копьё",
+  "item.frostborn-horns.goat_villager_spawn_egg": "Яйцо призыва козла-крестьянина",
 
-  "effect.frostborn-horns.horned_liar": "Рогатый лжец"
+  "effect.frostborn-horns.horned_liar": "Рогатый лжец",
+  "sounds.frostborn-horns.effect.horned_liar.ambient": "Рогатое внимание",
+
+  "gamerule.frostbornHornsFreezing": "Система замерзания Frostborn Horns"
 }

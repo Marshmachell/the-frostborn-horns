@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "frostborn-horns:item/goat_villager_spawn_egg"
+  }
+}

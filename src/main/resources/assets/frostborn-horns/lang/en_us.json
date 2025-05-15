@@ -1,5 +1,9 @@
 {
   "item.frostborn-horns.goat_spear": "Goat Spear",
+  "item.frostborn-horns.goat_villager_spawn_egg": "Goat Villager Spawn Egg",
 
-  "effect.frostborn-horns.horned_liar": "Horned Liar"
+  "effect.frostborn-horns.horned_liar": "Horned Liar",
+  "sounds.frostborn-horns.effect.horned_liar.ambient": "Horned attention",
+
+  "gamerule.frostbornHornsFreezing": "Freezing system of Frostborn Horns"
 }
